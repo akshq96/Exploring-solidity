@@ -1,5 +1,6 @@
 // This is a simple Solidity contract to demonstrate the use arrays and strings.
 // and this notes is made by Akshit.
+// Hello.
 
 // Define the compiler version you would be using
 pragma solidity ^0.8.19;
