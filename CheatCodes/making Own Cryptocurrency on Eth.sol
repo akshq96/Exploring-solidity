@@ -11,4 +11,3 @@ pragma solidity ^0.8.19;
 //     }
 // }
 
-// This code is also written in LW3Token.sol file.
