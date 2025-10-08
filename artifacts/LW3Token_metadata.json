@@ -433,7 +433,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"LW3Token.sol": "LW3Token"
+			"CheatCodes/making Own Cryptocurrency on Eth.sol": "LW3Token"
 		},
 		"evmVersion": "prague",
 		"libraries": {},
@@ -447,12 +447,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"LW3Token.sol": {
-			"keccak256": "0xb1ac94d999662cbd042825c48cab5d426340ca30f4357041b541cfa907c5a64b",
+		"CheatCodes/making Own Cryptocurrency on Eth.sol": {
+			"keccak256": "0x6dfff3f2634fb95fa4d61287f66263666a2e1c6fa1e50e308fc7669b6e7a5345",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://a293de8887d7a3316011d7b50e9f8dba385b2153e7e27b2c370c6307dac2f172",
-				"dweb:/ipfs/QmRxRLXFg4L8FEaV3jkURALrTVvZL8XspYGiptv9P3g3ht"
+				"bzz-raw://e15a1f8b351f4364f08ac5c9ba8e50fb7a6ad1ca511d9ef82331d9c7bc352c45",
+				"dweb:/ipfs/QmPdfrnCe5MmqMfVLu62Hta5JFtUJRvD6p4dCSSty77gPt"
 			]
 		},
 		"https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/interfaces/draft-IERC6093.sol": {
