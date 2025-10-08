@@ -1,0 +1,198 @@
+<!-- 
+
+This is code for creating my first d-App which uses the Html,CSS and script file with some contracts.
+and this notes is made by Akshit.
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <script type="module">
+      import {
+        createPublicClient,
+        createWalletClient,
+        custom,
+        http,
+      } from "https://unpkg.com/viem@1.14.0?module";
+      import { sepolia } from "https://unpkg.com/viem/chains?module";
+
+      const contractAddress = "0xYourContractAddress";
+      const abi = [
+        /* your contract ABI here */
+      ];
+
+      const client = createPublicClient({
+        chain: sepolia,
+        transport: http(),
+      });
+
+      const walletClient = createWalletClient({
+        chain: sepolia,
+        transport: custom(window.ethereum),
+      });
+
+      const accounts = await walletClient.requestAddresses();
+      const userAddress = accounts[0];
+
+      document.getElementById("readBtn").addEventListener("click", async () => {
+        const value = await client.readContract({
+          address: contractAddress,
+          abi,
+          functionName: "getValue",
+        });
+        alert("Value from contract: " + value);
+      });
+
+      document
+        .getElementById("writeBtn")
+        .addEventListener("click", async () => {
+          await walletClient.writeContract({
+            address: contractAddress,
+            abi,
+            functionName: "setValue",
+            args: [42],
+            account: userAddress,
+          });
+          alert("Transaction sent!");
+        });
+    </script>
+    <style>
+      body {
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      div {
+        width: 20%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+      }
+
+      button {
+        width: 100%;
+        margin: 10px 0px 5px 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>This is my dApp!</h1>
+      <p>Here we can set or get the mood:</p>
+      <label for="mood">Input Mood:</label> <br />
+      <input type="text" id="mood" />
+
+      <button onclick="getMood()">Get Mood</button>
+      <button onclick="setMood()">Set Mood</button>
+      <p id="showMood"></p>
+    </div>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LearnWeb3 First dApp</title>
+  </head>
+  <body>
+    <body>
+      <script>
+        //here we are just declaring two variables. We will be assigning them their respective values in the next script
+        var getMood;
+        var setMood;
+      </script>
+
+      <script type="module">
+        //A Wallet Client is an interface to interact with Ethereum Accounts.
+        //The createWalletClient function sets up a Wallet Client with a given medium.
+        import {
+          createWalletClient,
+          custom,
+          getContract,
+        } from "https://esm.sh/viem";
+        import { sepolia } from "https://esm.sh/viem/chains";
+
+        //create a client that connects the user's account to Ethereum Sepolia
+        const walletClient = createWalletClient({
+          chain: sepolia,
+          transport: custom(window.ethereum),
+        });
+
+        // this will make your wallet extension show you a pop-up requesting you to connect your wallet
+        // accounts will be an array
+        const accounts = await walletClient.requestAddresses();
+
+        //get the first address in the accounts array
+        const [address] = accounts;
+
+        // Replace the following two values.
+        //Make sure the MoodContractAddress is in double single/double quotes
+        const MoodContractAddress = "...";
+        const MoodContractABI = [
+          {
+            inputs: [
+              {
+                internalType: "string",
+                name: "_mood",
+                type: "string",
+              },
+            ],
+            name: "setMood",
+            outputs: [],
+            stateMutability: "nonpayable",
+            type: "function",
+          },
+          {
+            inputs: [],
+            name: "getMood",
+            outputs: [
+              {
+                internalType: "string",
+                name: "",
+                type: "string",
+              },
+            ],
+            stateMutability: "view",
+            type: "function",
+          },
+        ];
+
+        const MoodContractInstance = getContract({
+          address: MoodContractAddress,
+          abi: MoodContractABI,
+          client: walletClient,
+        });
+
+        getMood = async function () {
+          const mood = await MoodContractInstance.read.getMood();
+          document.getElementById("showMood").innerText = `Your Mood: ${mood}`;
+        };
+
+        setMood = async function () {
+          const mood = document.getElementById("mood").value;
+          await MoodContractInstance.write.setMood([mood], {
+            account: address,
+          });
+        };
+      </script>
+
+      <div>
+        <h1>This is my dApp!</h1>
+        <p>Here we can set or get the mood:</p>
+        <label for="mood">Input Mood:</label> <br />
+        <input type="text" id="mood" />
+
+        <button onclick="getMood()">Get Mood</button>
+        <button onclick="setMood()">Set Mood</button>
+        <p id="showMood"></p>
+      </div>
+    </body>
+  </body>
+</html>
