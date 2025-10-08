@@ -1,4 +1,7 @@
 Remapping kya hota hai?
-
 Remapping ek shortcut hota hai import ke liye.
 Iska use hum tab karte hain jab hume koi badi ya confusing file path baar-baar likhni padti hai, usko short aur simple banaane ke liye.
+
+.env file kya hota hai?
+.env file ek environment file hoti hai jismein aap apne secrets ya important settings store karte
+
