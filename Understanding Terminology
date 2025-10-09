@@ -5,3 +5,8 @@ Iska use hum tab karte hain jab hume koi badi ya confusing file path baar-baar l
 .env file kya hota hai?
 .env file ek environment file hoti hai jismein aap apne secrets ya important settings store karte
 
+React components.
+omposition 
+React me hum chhote-chhote parts banate hain, jise components kehte hain. Ye components ek webpage ka chhota hissa dikhate hain. Ab hum ye chhote components ko andar doosre components ke andar rakh sakte hain, jisse bada component banta hai
+Is process ko Composition kehte hain. Matlab, chhote functions (jo HTML dikhate hain) ko ek saath mila ke ek bada HTML banate hain.
+
