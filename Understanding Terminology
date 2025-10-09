@@ -63,3 +63,22 @@ State use karo (useState),
 State update karo, React UI ko automatically update karega
 
 5.
+Variables created using useState in React are called State Variables. State Variables can be updated and automatically update the view of the app. Here's another example of using State Variables with input boxes.
+function StateWithInput() {
+  // myName is the variable
+  // setMyName is the updater function
+  // Create a state variable with initial value
+  // being an empty string ""
+  const [myName, setMyName] = useState("");
+  function handleOnChange(text) {
+    setMyName(text);
+  }
+  return (
+    <div>
+      <input type="text" onChange={(e) => handleOnChange(e.target.value)} />
+      <p>Hello, {myName}!</p>
+    </div>
+  );
+}
+
+6.
