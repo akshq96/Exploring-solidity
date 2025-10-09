@@ -90,3 +90,23 @@ useEffect kaise kaam karta hai?
 Tum usko do cheeze dete ho:
 Ek function — jisme wo kaam likhoge jo tum karna chahte ho (jaise server se data lana).
 Ek list (dependency array) — jisme tum bataoge ki kab tumhara function chalna chahiye.
+
+7.
+Why does Gas exist?
+Gas fees help keep the Ethereum network secure. By requiring a fee for every computation executed on the network, bad actors are prevented from spamming the network.
+In order to avoid accidental or malicious infinite loops in smart contracts, which would cause all Ethereum nodes to forever be stuck, gas limits on transactions set a limit to how much computation a transaction can use.
+ // SPDX-License-Identifier: MIT
+pragma solidity ^0.8.10;
+contract Gas {
+    uint public i = 0;
+    // Using up all of the gas that you send causes your transaction to fail.
+    // State changes are undone.
+    // Gas spent are not refunded.
+    function forever() public {
+        // Here we run a loop until all of the gas are spent
+        // and the transaction fails
+        while (true) {
+            i += 1;
+        }
+    }
+}
