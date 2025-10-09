@@ -1,12 +1,65 @@
-Remapping kya hota hai?
+1.Remapping kya hota hai?
 Remapping ek shortcut hota hai import ke liye.
 Iska use hum tab karte hain jab hume koi badi ya confusing file path baar-baar likhni padti hai, usko short aur simple banaane ke liye.
 
+2.
 .env file kya hota hai?
 .env file ek environment file hoti hai jismein aap apne secrets ya important settings store karte
 
+3.
 React components.
 omposition 
 React me hum chhote-chhote parts banate hain, jise components kehte hain. Ye components ek webpage ka chhota hissa dikhate hain. Ab hum ye chhote components ko andar doosre components ke andar rakh sakte hain, jisse bada component banta hai
 Is process ko Composition kehte hain. Matlab, chhote functions (jo HTML dikhate hain) ko ek saath mila ke ek bada HTML banate hain.
 
+4.
+React ke Composition, Data Passing, aur Interactivity ke baare mein baat ki. Matlab, hum button click pe code chala sakte hain, data ek component se doosre component mein bhej sakte hain, aur chhote-chhote parts ko mila ke badi cheez bana sakte hain.
+Lekin ab jab hum chahte hain ki kuch variables ko update kar ke UI bhi badle, tab problem aati hai.
+Agar aap ek simple variable ko change karoge, jaise:
+
+let count = 0;
+function App() {
+  function handleClick() {
+    count = count + 1;  // variable update ho raha hai
+    console.log(count);
+  }
+  return (
+    <div>
+      <p>Count: {count}</p>  {/* Ye screen pe dikhega */}
+      <button onClick={handleClick}>Increment</button>
+    </div>
+  );
+}
+Yahan pe jab button dabate ho:
+count variable badal toh jaata hai,
+Lekin screen pe value change nahi hoti!
+Kyun? Kyunki React ko pata nahi chalta ki variable update hua hai, isliye wo page ko dobara render (refresh) nahi karta.
+
+Solution kya hai?
+React me state hoti hai — aisi special variables jise React track karta hai.
+useState hook se aap state banate ho. Jab state update hoti hai, React automatic UI ko refresh karta hai.
+Example:
+import React, { useState } from 'react';
+function App() {
+  const [count, setCount] = useState(0);  // count ab state hai
+  function handleClick() {
+    setCount(count + 1);  // state update karo
+  }
+  return (
+    <div>
+      <p>Count: {count}</p>  {/* Ye ab update hota rahega */}
+      <button onClick={handleClick}>Increment</button>
+    </div>
+  );
+}
+Ab jab button dabate ho:
+setCount se state update hoti hai,
+React ko pata chal jaata hai ki UI update karna hai,
+Aur screen pe count badal ke dikhta hai.
+
+Short me:
+Simple variable change karna React me kaam nahi karta,
+State use karo (useState),
+State update karo, React UI ko automatically update karega
+
+5.
