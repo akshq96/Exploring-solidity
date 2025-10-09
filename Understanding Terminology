@@ -82,3 +82,11 @@ function StateWithInput() {
 }
 
 6.
+useEffect hook kya hai?
+Socho React me jab tumhara page khulta hai, ya koi cheez badalti hai, toh tumhe kuch extra kaam karna hai — jaise data lana, timer lagana, ya console me message print karna.
+useEffect wo special function hai jo tumhe ye extra kaam karne deta hai.
+
+useEffect kaise kaam karta hai?
+Tum usko do cheeze dete ho:
+Ek function — jisme wo kaam likhoge jo tum karna chahte ho (jaise server se data lana).
+Ek list (dependency array) — jisme tum bataoge ki kab tumhara function chalna chahiye.
