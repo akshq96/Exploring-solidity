@@ -7,6 +7,6 @@ contract LW3Token is ERC20 {
     constructor(string memory _name, string memory _symbol) ERC20(_name, _symbol) {
         _mint(msg.sender, 10 * 10 ** 18);
 
-    constructor(string my_name,string my_code)
+    constructor(string my_new,string my_code) ERC20(_new,_code)
     }
 }
